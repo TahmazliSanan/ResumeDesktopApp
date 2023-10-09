@@ -23,6 +23,13 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
         loggedInUser = udi.getUserById(1);
+        fillUserData();
+    }
+    
+    private void fillUserData() {
+        txtName.setText(loggedInUser.getName());
+        txtSurname.setText(loggedInUser.getSurname());
+        txtAreaProfile.setText(loggedInUser.getProfileDescription());
     }
 
     /**
@@ -43,8 +50,8 @@ public class Main extends javax.swing.JFrame {
         pnlSkills = new javax.swing.JPanel();
         pnlEmploymentHistory = new javax.swing.JPanel();
         pnlUserInfo = new javax.swing.JPanel();
-        txtName = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        lblName = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
         lblSurname = new javax.swing.JLabel();
         txtSurname = new javax.swing.JTextField();
         btnSave = new javax.swing.JButton();
@@ -112,12 +119,12 @@ public class Main extends javax.swing.JFrame {
 
         tpUserInfo.addTab("Employment History", pnlEmploymentHistory);
 
-        txtName.setText("Name");
-        txtName.setToolTipText("Enter your name");
+        lblName.setText("Name");
+        lblName.setToolTipText("Enter your name");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtNameActionPerformed(evt);
             }
         });
 
@@ -145,11 +152,11 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlUserInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblSurname)
-                    .addComponent(txtName))
+                    .addComponent(lblName))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlUserInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtSurname)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSave)
                 .addContainerGap(23, Short.MAX_VALUE))
@@ -159,8 +166,8 @@ public class Main extends javax.swing.JFrame {
             .addGroup(pnlUserInfoLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(pnlUserInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtName)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblName)
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(pnlUserInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSurname)
@@ -199,9 +206,9 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtNameActionPerformed
 
     private void txtSurnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSurnameActionPerformed
         // TODO add your handling code here:
@@ -209,9 +216,15 @@ public class Main extends javax.swing.JFrame {
 
     
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        String name = txtName.getText();
+        String name = lblName.getText();
         String surname = txtSurname.getText();
         String profileDescription = txtAreaProfile.getText();
+        
+        loggedInUser.setName(name);
+        loggedInUser.setSurname(surname);
+        loggedInUser.setProfileDescription(profileDescription);
+        
+        udi.updateUser(loggedInUser);
     }//GEN-LAST:event_btnSaveActionPerformed
 
     /**
@@ -253,7 +266,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnSave;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblSurname;
     private javax.swing.JPanel pnlDetails;
     private javax.swing.JPanel pnlEmploymentHistory;
@@ -262,7 +275,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel pnlUserInfo;
     private javax.swing.JTabbedPane tpUserInfo;
     private javax.swing.JTextArea txtAreaProfile;
-    private javax.swing.JLabel txtName;
+    private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtSurname;
     // End of variables declaration//GEN-END:variables
 }
