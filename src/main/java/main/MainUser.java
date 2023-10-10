@@ -17,17 +17,17 @@ import java.util.logging.Logger;
  *
  * @author user
  */
-public class Main extends javax.swing.JFrame {
+public class MainUser extends javax.swing.JFrame {
 
     /**
-     * Creates new form Main
+     * Creates new form MainUser
      */
     
     private final SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
     private final UserDaoInter udi = Context.instanceOfUserDao();
     User loggedInUser;
     
-    public Main() {
+    public MainUser() {
         initComponents();
         loggedInUser = udi.getUserById(1);
         fillUserData();
@@ -360,7 +360,7 @@ public class Main extends javax.swing.JFrame {
             
             udi.updateUser(loggedInUser);
         } catch (ParseException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MainUser.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -401,20 +401,21 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Main().setVisible(true);
+                new MainUser().setVisible(true);
             }
         });
     }
