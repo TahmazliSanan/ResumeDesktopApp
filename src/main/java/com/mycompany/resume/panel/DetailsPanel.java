@@ -30,7 +30,6 @@ public class DetailsPanel extends javax.swing.JPanel {
     
     public DetailsPanel() {
         initComponents();
-        fillWindow();
     }
     
     private void fillWindow() {
@@ -40,6 +39,7 @@ public class DetailsPanel extends javax.swing.JPanel {
     }
     
     public void fillUserData() {
+        fillWindow();
         User loggedInUser = Config.loggedInUser;
         txtAddress.setText(loggedInUser.getAddress());
         txtPhoneNumber.setText(loggedInUser.getPhone());

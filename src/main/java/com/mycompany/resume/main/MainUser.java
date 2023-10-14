@@ -6,6 +6,7 @@ package com.mycompany.resume.main;
 
 import com.mycompany.resume.config.Config;
 import com.mycompany.dao.inter.UserDaoInter;
+import com.mycompany.entity.Skill;
 import com.mycompany.entity.User;
 import com.mycompany.main.Context;
 
@@ -22,12 +23,12 @@ public class MainUser extends javax.swing.JFrame {
     private final UserDaoInter udi = Context.instanceOfUserDao();
     
     public MainUser() {
-        initComponents();
         Config.loggedInUser = udi.getUserById(1);
+        initComponents();
         fillUserData();
         panelDetails.fillUserData();
         panelProfile.fillUserData();
-        panelSkills.fillUserData();
+        
     }
     
     public void fillUserData() {
@@ -49,7 +50,6 @@ public class MainUser extends javax.swing.JFrame {
         tpUserInfo = new javax.swing.JTabbedPane();
         panelDetails = new com.mycompany.resume.panel.DetailsPanel();
         panelProfile = new com.mycompany.resume.panel.ProfilePanel();
-        panelSkills = new com.mycompany.resume.panel.SkillsPanel();
         pnlUserInfo = new javax.swing.JPanel();
         lblName = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
@@ -61,19 +61,6 @@ public class MainUser extends javax.swing.JFrame {
 
         tpUserInfo.addTab("Details", panelDetails);
         tpUserInfo.addTab("Profile", panelProfile);
-
-        javax.swing.GroupLayout panelSkillsLayout = new javax.swing.GroupLayout(panelSkills);
-        panelSkills.setLayout(panelSkillsLayout);
-        panelSkillsLayout.setHorizontalGroup(
-            panelSkillsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 792, Short.MAX_VALUE)
-        );
-        panelSkillsLayout.setVerticalGroup(
-            panelSkillsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
-        );
-
-        tpUserInfo.addTab("Skills", panelSkills);
 
         lblName.setText("Name");
         lblName.setToolTipText("Enter your name");
@@ -224,7 +211,6 @@ public class MainUser extends javax.swing.JFrame {
     private javax.swing.JLabel lblSurname;
     private com.mycompany.resume.panel.DetailsPanel panelDetails;
     private com.mycompany.resume.panel.ProfilePanel panelProfile;
-    private com.mycompany.resume.panel.SkillsPanel panelSkills;
     private javax.swing.JPanel pnlUserInfo;
     private javax.swing.JTabbedPane tpUserInfo;
     private javax.swing.JTextField txtName;
